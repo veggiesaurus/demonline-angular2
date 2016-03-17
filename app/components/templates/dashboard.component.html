@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Search</h3>
+        </div>
+        <div class="panel-body">
+            <div class="input-group bottom5">
+                <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
+                <input #term type="text" class="form-control" (keyup)="searchSummaries(term.value)" placeholder="Enter keywords">
+            </div>
+            <ul *ngIf='summaries' class="list-group">
+                <div *ngFor="#summary of summaries">
+                    <li class="list-group-item">
+                        <a *ngIf='isAdmin' (click)="editEntry(summary)"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                        <a class="summaryEntry" (click)="gotoEntry(summary.reference)"><span class="summaryReference">{{summary.reference}}: </span><span class="summaryTitle">{{summary.title}}</span><span class="summaryPurpose" *ngIf='summary.purpose'> ({{summary.purpose}})</span></a>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Categories</h3>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <div *ngFor="#category of categories">
+                    <li class="list-group-item">
+                        <a *ngIf='isAdmin' (click)="editCategory(category)"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                        <a (click)="gotoList(category)">{{category.name}}</a>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <div *ngIf='isAdmin'>
+        <button class="btn btn-primary" type="button" (click)="addCategory()"><span class="glyphicon glyphicon-plus"></span>Add new category</button>
+    </div>
+</div>

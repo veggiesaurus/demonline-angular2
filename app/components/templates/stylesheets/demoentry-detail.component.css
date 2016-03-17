@@ -1,0 +1,14 @@
+#entryContainer {
+  margin-top: 15px;
+}
+.entry-heading {
+  font-weight: bold;
+}
+.entry-img {
+  max-height: 300px;
+  max-width: 300px;
+  width: 300px;
+  height: 300px;
+  margin-right: 10px;
+  background-color: lightgray;
+}

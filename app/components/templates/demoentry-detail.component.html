@@ -1,0 +1,32 @@
+<div *ngIf='entry'>
+    <ol class="breadcrumb">
+        <li><a (click)="goHome()">Home</a></li>
+        <li><a *ngIf='category' (click)="gotoList(category)">{{category.name}}</a></li>
+        <li *ngIf='entry' class="active">{{entry.reference}}</li>
+    </ol>
+    <div class="container" id="entryContainer">
+        <div class="panel panel-primary">
+             <div class="panel-heading">
+            <h3 class="panel-title"><span class="entry-title">{{entry.title}}</span></h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <a *ngIf='entry.img' class="pull-left">
+                        <img class="img-responsive entry-img media-object" [src]="entry.img" />
+                    </a>
+                    <div class="media-body">                        
+                        <p *ngIf='entry.purpose' class="media-heading"><span class="entry-heading entry-purpose-heading">Purpose: </span><span class="entry-contents entry-purpose">{{entry.purpose}}</span></p>
+                        <p class="media-heading"><span *ngIf='entry.purpose' class="entry-heading entry-description-heading">Description: </span>
+                            <span
+                            *ngIf='entry.purpose' class="entry-contents entry-description">{{entry.description}}</span>
+                        </p>
+                        <p *ngIf='entry.similarTo && entry.similarTo.length'>Similar to:
+                            <a *ngFor="#simLink of entry.similarTo" (click)="gotoEntry(simLink)">{{simLink}}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="button" (click)="goBack()">Back</button>
+    </div>    
+</div>
