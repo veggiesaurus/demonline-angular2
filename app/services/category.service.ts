@@ -8,7 +8,8 @@ import {Category} from '../models/category';
 export class CategoryService {
     constructor (private http: Http) {}
     
-    private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
+    private _hostUrl = 'http://localhost:3000/';
+    //private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
     private _categoryUrl = this._hostUrl+'api/cats/';
     private _categoryAdminUrl = this._hostUrl+'api/admin/cats/'
     
@@ -20,35 +21,34 @@ export class CategoryService {
     
     getCategory(prefix: string):Observable<Category>{
         return this.http.get(this._categoryUrl+prefix)
-                    .map(res => <Category> res.json())
+                    .map(res => <Category> res.json())                    
                     .catch(this.handleError);
     }
     
     updateCategory(prefix: string, category: Category): Observable<Category>{
         let body = JSON.stringify(category);
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-        
-        return this.http.put(this._categoryAdminUrl+prefix, body, options)
+        let headers = new Headers({ 'Content-Type': 'application/json'});
+        let options = new RequestOptions({ headers: headers });        
+        return this.http.put(this._categoryAdminUrl+prefix+'?token='+localStorage.getItem('token'), body, options)
                     .map(res =>  <Category> res.json().data)
                     .catch(this.handleError)
     }
     
     deleteCategory(prefix: string): Observable<Category>{        
-        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let headers = new Headers({ 'Content-Type': 'application/json'});
         let options = new RequestOptions({ headers: headers });
         
-        return this.http.delete(this._categoryAdminUrl+prefix, options)
+        return this.http.delete(this._categoryAdminUrl+prefix+'?token='+localStorage.getItem('token'), options)
                     .map(res =>  <Category> res.json().data)
                     .catch(this.handleError)
     }
     
     addCategory(category: Category): Observable<Category>{
         let body = JSON.stringify(category);
-        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let headers = new Headers({ 'Content-Type': 'application/json'});
         let options = new RequestOptions({ headers: headers });
         
-        return this.http.post(this._categoryAdminUrl, body, options)
+        return this.http.post(this._categoryAdminUrl+'?token='+localStorage.getItem('token'), body, options)
                     .map(res =>  <Category> res.json().data)
                     .catch(this.handleError)
     }

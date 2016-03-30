@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../services/category.service', '../services/demoentry.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../services/category.service', '../services/demoentry.service', '../services/auth.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../services/category.servi
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, category_service_1, demoentry_service_1;
+    var core_1, router_1, category_service_1, demoentry_service_1, auth_service_1;
     var DashboardComponent;
     return {
         setters:[
@@ -25,20 +25,35 @@ System.register(['angular2/core', 'angular2/router', '../services/category.servi
             },
             function (demoentry_service_1_1) {
                 demoentry_service_1 = demoentry_service_1_1;
+            },
+            function (auth_service_1_1) {
+                auth_service_1 = auth_service_1_1;
             }],
         execute: function() {
             DashboardComponent = (function () {
-                function DashboardComponent(_router, _categoryService, _demoEntryService) {
+                function DashboardComponent(_router, _categoryService, _demoEntryService, _authService) {
                     this._router = _router;
                     this._categoryService = _categoryService;
                     this._demoEntryService = _demoEntryService;
+                    this._authService = _authService;
                     this.categories = [];
                     this.summaries = [];
+                    this.loggedIn = false;
                 }
                 DashboardComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this._categoryService.getCategories()
                         .subscribe(function (categories) { return _this.categories = categories; }, function (error) { return _this.errorMessage = error; });
+                    this.loggedIn = this._authService.isLoggedIn();
+                };
+                DashboardComponent.prototype.login = function () {
+                    var _this = this;
+                    this._authService.login('admin', 'helloAdmin')
+                        .subscribe(function (val) { return console.log(val); }, function (error) { return _this.errorMessage = error; }, function () { return _this.loggedIn = _this._authService.isLoggedIn(); });
+                };
+                DashboardComponent.prototype.logout = function () {
+                    var _this = this;
+                    this._authService.logout().subscribe(function (val) { return console.log(val); }, function (error) { return _this.errorMessage = error; }, function () { return _this.loggedIn = false; });
                 };
                 DashboardComponent.prototype.searchSummaries = function (searchTerm) {
                     var _this = this;
@@ -53,12 +68,24 @@ System.register(['angular2/core', 'angular2/router', '../services/category.servi
                     var link = ['DemoEntryDetail', { ref: ref }];
                     this._router.navigate(link);
                 };
+                DashboardComponent.prototype.editCategory = function (category) {
+                    var link = ['EditCategory', { prefix: category.prefix }];
+                    this._router.navigate(link);
+                };
+                DashboardComponent.prototype.addCategory = function () {
+                    var link = ['AddCategory'];
+                    this._router.navigate(link);
+                };
+                DashboardComponent.prototype.editEntry = function (summary) {
+                    var link = ['EditEntry', { ref: summary.reference }];
+                    this._router.navigate(link);
+                };
                 DashboardComponent = __decorate([
                     core_1.Component({
                         selector: 'my-dashboard',
                         templateUrl: './app/components/templates/dashboard.component.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, category_service_1.CategoryService, demoentry_service_1.DemoEntryService])
+                    __metadata('design:paramtypes', [router_1.Router, category_service_1.CategoryService, demoentry_service_1.DemoEntryService, auth_service_1.AuthService])
                 ], DashboardComponent);
                 return DashboardComponent;
             }());

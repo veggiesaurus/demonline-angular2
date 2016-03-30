@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'angular2/http', './services/category.service', './services/demoentry.service', './components/category.component', './components/demoentry-detail.component', './components/dashboard.component', './components/admin/admin-dashboard.component', './components/admin/admin-category.component', './components/admin/add-category.component', './components/admin/edit-category.component', './components/admin/add-entry.component', './components/admin/edit-entry.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'angular2/http', './services/category.service', './services/demoentry.service', './services/auth.service', './components/category.component', './components/demoentry-detail.component', './components/dashboard.component', './components/admin/add-category.component', './components/admin/edit-category.component', './components/admin/add-entry.component', './components/admin/edit-entry.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './service
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, http_1, category_service_1, demoentry_service_1, category_component_1, demoentry_detail_component_1, dashboard_component_1, admin_dashboard_component_1, admin_category_component_1, add_category_component_1, edit_category_component_1, add_entry_component_1, edit_entry_component_1;
+    var core_1, router_1, http_1, category_service_1, demoentry_service_1, auth_service_1, category_component_1, demoentry_detail_component_1, dashboard_component_1, add_category_component_1, edit_category_component_1, add_entry_component_1, edit_entry_component_1;
     var AppComponent;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './service
             function (demoentry_service_1_1) {
                 demoentry_service_1 = demoentry_service_1_1;
             },
+            function (auth_service_1_1) {
+                auth_service_1 = auth_service_1_1;
+            },
             function (category_component_1_1) {
                 category_component_1 = category_component_1_1;
             },
@@ -37,12 +40,6 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './service
             },
             function (dashboard_component_1_1) {
                 dashboard_component_1 = dashboard_component_1_1;
-            },
-            function (admin_dashboard_component_1_1) {
-                admin_dashboard_component_1 = admin_dashboard_component_1_1;
-            },
-            function (admin_category_component_1_1) {
-                admin_category_component_1 = admin_category_component_1_1;
             },
             function (add_category_component_1_1) {
                 add_category_component_1 = add_category_component_1_1;
@@ -66,7 +63,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './service
                         selector: 'my-app',
                         template: "\n        <router-outlet></router-outlet>\n    ",
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [router_1.ROUTER_PROVIDERS, http_1.HTTP_PROVIDERS, category_service_1.CategoryService, demoentry_service_1.DemoEntryService]
+                        providers: [router_1.ROUTER_PROVIDERS, http_1.HTTP_PROVIDERS, category_service_1.CategoryService, demoentry_service_1.DemoEntryService, auth_service_1.AuthService]
                     }),
                     router_1.RouteConfig([
                         {
@@ -78,16 +75,6 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './service
                             path: '/entry/:ref',
                             name: 'DemoEntryDetail',
                             component: demoentry_detail_component_1.DemoEntryDetailComponent
-                        },
-                        {
-                            path: '/admin',
-                            name: 'Admin',
-                            component: admin_dashboard_component_1.AdminDashboardComponent
-                        },
-                        {
-                            path: '/admin/category/:prefix',
-                            name: 'AdminCategory',
-                            component: admin_category_component_1.AdminCategoryComponent
                         },
                         {
                             path: '/admin/newcategory',

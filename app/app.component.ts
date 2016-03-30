@@ -3,11 +3,10 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 import {HTTP_PROVIDERS}    from 'angular2/http';
 import {CategoryService} from './services/category.service';
 import {DemoEntryService} from './services/demoentry.service';
+import {AuthService} from './services/auth.service';
 import {CategoryComponent} from './components/category.component';
 import {DemoEntryDetailComponent} from './components/demoentry-detail.component';
 import {DashboardComponent} from './components/dashboard.component';
-import {AdminDashboardComponent} from './components/admin/admin-dashboard.component';
-import {AdminCategoryComponent} from './components/admin/admin-category.component';
 import {AddCategoryComponent} from './components/admin/add-category.component';
 import {EditCategoryComponent} from './components/admin/edit-category.component';
 import {AddEntryComponent} from './components/admin/add-entry.component';
@@ -19,7 +18,7 @@ import {EditEntryComponent} from './components/admin/edit-entry.component';
         <router-outlet></router-outlet>
     `,
     directives: [ROUTER_DIRECTIVES],
-    providers: [ROUTER_PROVIDERS, HTTP_PROVIDERS, CategoryService, DemoEntryService]    
+    providers: [ROUTER_PROVIDERS, HTTP_PROVIDERS, CategoryService, DemoEntryService, AuthService]    
 })
 @RouteConfig([
     {
@@ -31,17 +30,7 @@ import {EditEntryComponent} from './components/admin/edit-entry.component';
         path: '/entry/:ref',
         name: 'DemoEntryDetail',
         component: DemoEntryDetailComponent
-    },
-    {
-        path: '/admin',
-        name: 'Admin',
-        component: AdminDashboardComponent
-    },
-    {
-        path: '/admin/category/:prefix',
-        name: 'AdminCategory',
-        component: AdminCategoryComponent
-    },
+    },   
     {
         path: '/admin/newcategory',
         name: 'AddCategory',

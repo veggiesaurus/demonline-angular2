@@ -28,7 +28,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
             CategoryService = (function () {
                 function CategoryService(http) {
                     this.http = http;
-                    this._hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
+                    this._hostUrl = 'http://localhost:3000/';
+                    //private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
                     this._categoryUrl = this._hostUrl + 'api/cats/';
                     this._categoryAdminUrl = this._hostUrl + 'api/admin/cats/';
                 }
@@ -46,14 +47,14 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     var body = JSON.stringify(category);
                     var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
                     var options = new http_2.RequestOptions({ headers: headers });
-                    return this.http.put(this._categoryAdminUrl + prefix, body, options)
+                    return this.http.put(this._categoryAdminUrl + prefix + '?token=' + localStorage.getItem('token'), body, options)
                         .map(function (res) { return res.json().data; })
                         .catch(this.handleError);
                 };
                 CategoryService.prototype.deleteCategory = function (prefix) {
                     var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
                     var options = new http_2.RequestOptions({ headers: headers });
-                    return this.http.delete(this._categoryAdminUrl + prefix, options)
+                    return this.http.delete(this._categoryAdminUrl + prefix + '?token=' + localStorage.getItem('token'), options)
                         .map(function (res) { return res.json().data; })
                         .catch(this.handleError);
                 };
@@ -61,7 +62,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     var body = JSON.stringify(category);
                     var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
                     var options = new http_2.RequestOptions({ headers: headers });
-                    return this.http.post(this._categoryAdminUrl, body, options)
+                    return this.http.post(this._categoryAdminUrl + '?token=' + localStorage.getItem('token'), body, options)
                         .map(function (res) { return res.json().data; })
                         .catch(this.handleError);
                 };

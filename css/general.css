@@ -2,6 +2,24 @@
     font-weight: bold;  
 }
 
+.zero-corner {
+    position: relative;
+}
+.btn-corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 2px;
+    padding-left: 8px;
+}
+.btn-corner-alt {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 6px;
+    padding-left: 4px;
+}
+
   body {
     padding-top: 10px;
   }

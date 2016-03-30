@@ -9,7 +9,8 @@ import {DemoSummary} from '../models/demosummary';
 export class DemoEntryService {
      constructor (private http: Http) {}
     
-    private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
+    private _hostUrl = 'http://localhost:3000/';
+    //private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
     private _summaryUrl = this._hostUrl+'api/demoEntry/summary';
     private _searchUrl = this._hostUrl+'api/demoEntry/search?keyword=';
     private _entryUrl = this._hostUrl+'api/demoEntry/ref/';
@@ -43,7 +44,7 @@ export class DemoEntryService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         
-        return this.http.put(this._entryAdminUrl+ref, body, options)
+        return this.http.put(this._entryAdminUrl+ref+'?token='+localStorage.getItem('token'), body, options)
                     .map(res =>  <DemoEntry> res.json().data)
                     .catch(this.handleError)
     }
@@ -52,7 +53,7 @@ export class DemoEntryService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         
-        return this.http.delete(this._entryAdminUrl+prefix, options)
+        return this.http.delete(this._entryAdminUrl+prefix+'?token='+localStorage.getItem('token'), options)
                     .map(res =>  <DemoEntry> res.json().data)
                     .catch(this.handleError)
     }
@@ -62,7 +63,7 @@ export class DemoEntryService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         
-        return this.http.post(this._entryAdminUrlAdd, body, options)
+        return this.http.post(this._entryAdminUrlAdd+'?token='+localStorage.getItem('token'), body, options)
                     .map(res =>  <DemoEntry> res.json().data)
                     .catch(this.handleError)
     }

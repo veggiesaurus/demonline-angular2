@@ -28,7 +28,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
             DemoEntryService = (function () {
                 function DemoEntryService(http) {
                     this.http = http;
-                    this._hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
+                    this._hostUrl = 'http://localhost:3000/';
+                    //private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
                     this._summaryUrl = this._hostUrl + 'api/demoEntry/summary';
                     this._searchUrl = this._hostUrl + 'api/demoEntry/search?keyword=';
                     this._entryUrl = this._hostUrl + 'api/demoEntry/ref/';
@@ -59,14 +60,14 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     var body = JSON.stringify(entry);
                     var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
                     var options = new http_2.RequestOptions({ headers: headers });
-                    return this.http.put(this._entryAdminUrl + ref, body, options)
+                    return this.http.put(this._entryAdminUrl + ref + '?token=' + localStorage.getItem('token'), body, options)
                         .map(function (res) { return res.json().data; })
                         .catch(this.handleError);
                 };
                 DemoEntryService.prototype.deleteEntry = function (prefix) {
                     var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
                     var options = new http_2.RequestOptions({ headers: headers });
-                    return this.http.delete(this._entryAdminUrl + prefix, options)
+                    return this.http.delete(this._entryAdminUrl + prefix + '?token=' + localStorage.getItem('token'), options)
                         .map(function (res) { return res.json().data; })
                         .catch(this.handleError);
                 };
@@ -74,7 +75,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                     var body = JSON.stringify(entry);
                     var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
                     var options = new http_2.RequestOptions({ headers: headers });
-                    return this.http.post(this._entryAdminUrlAdd, body, options)
+                    return this.http.post(this._entryAdminUrlAdd + '?token=' + localStorage.getItem('token'), body, options)
                         .map(function (res) { return res.json().data; })
                         .catch(this.handleError);
                 };
