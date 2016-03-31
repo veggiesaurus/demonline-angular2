@@ -42,7 +42,14 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                         .map(function (res) {
                         var jsonData = res.json();
                         _this.token = jsonData.token;
-                        localStorage.setItem('token', _this.token);
+                        if (_this.token) {
+                            localStorage.setItem('token', _this.token);
+                            return true;
+                        }
+                        else {
+                            localStorage.removeItem('token');
+                            return false;
+                        }
                     })
                         .catch(this.handleError);
                 };

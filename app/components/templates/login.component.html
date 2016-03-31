@@ -1,0 +1,34 @@
+<div class="container">    
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Login</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="input-group bottom5">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+                    <input type="text" class="form-control" [(ngModel)]="username" placeholder="Enter username">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group bottom5">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
+                    <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password" >
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 bottom5">
+                    <button class="btn btn-success btn-block" type="button" (click)="login()">Log in</button>
+                </div>
+                </div>
+            <div class="row">
+                <div class="col-xs-12">                
+                    <button class="btn btn-primary btn-block" type="button" (click)="goBack()">Back</button>
+                </div>               
+            </div>
+        </div>         
+    </div>
+    <div *ngIf="loginError" class="alert alert-danger" role="alert">
+        <b>Invalid login details</b>
+    </div>
+</div>

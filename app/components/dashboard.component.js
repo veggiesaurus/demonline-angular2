@@ -46,11 +46,6 @@ System.register(['angular2/core', 'angular2/router', '../services/category.servi
                         .subscribe(function (categories) { return _this.categories = categories; }, function (error) { return _this.errorMessage = error; });
                     this.loggedIn = this._authService.isLoggedIn();
                 };
-                DashboardComponent.prototype.login = function () {
-                    var _this = this;
-                    this._authService.login('admin', 'helloAdmin')
-                        .subscribe(function (val) { return console.log(val); }, function (error) { return _this.errorMessage = error; }, function () { return _this.loggedIn = _this._authService.isLoggedIn(); });
-                };
                 DashboardComponent.prototype.logout = function () {
                     var _this = this;
                     this._authService.logout().subscribe(function (val) { return console.log(val); }, function (error) { return _this.errorMessage = error; }, function () { return _this.loggedIn = false; });
@@ -58,10 +53,14 @@ System.register(['angular2/core', 'angular2/router', '../services/category.servi
                 DashboardComponent.prototype.searchSummaries = function (searchTerm) {
                     var _this = this;
                     this._demoEntryService.findSummaries(searchTerm, 5)
-                        .subscribe(function (summaries) { return _this.summaries = summaries; }, function (error) { return _this.errorMessage = error; }, function () { return console.log(_this.summaries); });
+                        .subscribe(function (summaries) { return _this.summaries = summaries; }, function (error) { return _this.errorMessage = error; });
                 };
                 DashboardComponent.prototype.gotoList = function (category) {
                     var link = ['Category', { prefix: category.prefix }];
+                    this._router.navigate(link);
+                };
+                DashboardComponent.prototype.gotoLogin = function () {
+                    var link = ['Login'];
                     this._router.navigate(link);
                 };
                 DashboardComponent.prototype.gotoEntry = function (ref) {

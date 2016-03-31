@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'angular2/http', './services/category.service', './services/demoentry.service', './services/auth.service', './components/category.component', './components/demoentry-detail.component', './components/dashboard.component', './components/admin/add-category.component', './components/admin/edit-category.component', './components/admin/add-entry.component', './components/admin/edit-entry.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'angular2/http', './services/category.service', './services/demoentry.service', './services/auth.service', './components/category.component', './components/demoentry-detail.component', './components/dashboard.component', './components/login.component', './components/admin/add-category.component', './components/admin/edit-category.component', './components/admin/add-entry.component', './components/admin/edit-entry.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './service
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, http_1, category_service_1, demoentry_service_1, auth_service_1, category_component_1, demoentry_detail_component_1, dashboard_component_1, add_category_component_1, edit_category_component_1, add_entry_component_1, edit_entry_component_1;
+    var core_1, router_1, http_1, category_service_1, demoentry_service_1, auth_service_1, category_component_1, demoentry_detail_component_1, dashboard_component_1, login_component_1, add_category_component_1, edit_category_component_1, add_entry_component_1, edit_entry_component_1;
     var AppComponent;
     return {
         setters:[
@@ -40,6 +40,9 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './service
             },
             function (dashboard_component_1_1) {
                 dashboard_component_1 = dashboard_component_1_1;
+            },
+            function (login_component_1_1) {
+                login_component_1 = login_component_1_1;
             },
             function (add_category_component_1_1) {
                 add_category_component_1 = add_category_component_1_1;
@@ -97,11 +100,16 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './service
                             component: edit_entry_component_1.EditEntryComponent
                         },
                         {
+                            path: '/login',
+                            name: 'Login',
+                            component: login_component_1.LoginComponent
+                        },
+                        {
                             path: '/dashboard',
                             name: 'Dashboard',
                             component: dashboard_component_1.DashboardComponent,
                             useAsDefault: true
-                        },
+                        }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

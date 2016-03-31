@@ -1,6 +1,6 @@
 <div class="zero-corner">
         <div *ngIf='!loggedIn'>
-            <button class="btn btn-primary btn-corner-alt" type="button" (click)="login()"><span class="glyphicon glyphicon-log-in"></span></button>
+            <button class="btn btn-primary btn-corner-alt" type="button" (click)="gotoLogin()"><span class="glyphicon glyphicon-log-in"></span></button>
         </div>
         <div *ngIf='loggedIn'>
             <button class="btn btn-danger btn-corner" type="button" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span></button>

@@ -17,7 +17,7 @@ export class AuthService {
     //private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
     private _authUrl = this._hostUrl + 'api/auth/';
 
-    login(username: string, password: string) : Observable<void> {
+    login(username: string, password: string) : Observable<boolean> {
         var creds = "username=" + username + "&password=" + password;
 
         var headers = new Headers();
@@ -26,8 +26,15 @@ export class AuthService {
         return this.http.post(this._authUrl + 'login', creds, { headers: headers })
             .map(res => {
                 let jsonData = res.json();
-                this.token = jsonData.token;
-                localStorage.setItem('token', this.token);
+                this.token = jsonData.token;                
+                if (this.token){
+                    localStorage.setItem('token', this.token);
+                    return true;
+                }
+                else{
+                    localStorage.removeItem('token');
+                    return false;
+                }
             })
             .catch(this.handleError)
     }

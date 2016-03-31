@@ -32,26 +32,22 @@ export class DashboardComponent {
 
     }
 
-    login(){
-         this._authService.login('admin', 'helloAdmin')
-            .subscribe(val => console.log(val),
-            error => this.errorMessage = <any>error,
-            () =>  this.loggedIn = this._authService.isLoggedIn());
-    }
-
-    logout(){
-        
+    logout(){        
         this._authService.logout().subscribe(val => console.log(val), error => this.errorMessage = <any>error, () => this.loggedIn = false);
     }
 
     searchSummaries(searchTerm : string){
         this._demoEntryService.findSummaries(searchTerm, 5)
             .subscribe(summaries => this.summaries = summaries,
-            error => this.errorMessage = <any>error,
-            () => console.log(this.summaries));
+            error => this.errorMessage = <any>error);
     }
     gotoList(category: Category) {
         let link = ['Category', { prefix: category.prefix }];
+        this._router.navigate(link);
+    }
+    
+    gotoLogin(){
+       let link = ['Login'];
         this._router.navigate(link);
     }
 

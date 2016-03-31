@@ -7,6 +7,7 @@ import {AuthService} from './services/auth.service';
 import {CategoryComponent} from './components/category.component';
 import {DemoEntryDetailComponent} from './components/demoentry-detail.component';
 import {DashboardComponent} from './components/dashboard.component';
+import {LoginComponent} from './components/login.component';
 import {AddCategoryComponent} from './components/admin/add-category.component';
 import {EditCategoryComponent} from './components/admin/edit-category.component';
 import {AddEntryComponent} from './components/admin/add-entry.component';
@@ -52,11 +53,16 @@ import {EditEntryComponent} from './components/admin/edit-entry.component';
         component: EditEntryComponent
     },
     {
+        path: '/login',
+        name: 'Login',
+        component: LoginComponent
+    },
+    {
         path: '/dashboard',
         name: 'Dashboard',
         component: DashboardComponent,
         useAsDefault: true
-    },
+    }
 
 ])
 export class AppComponent {
