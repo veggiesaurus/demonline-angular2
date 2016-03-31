@@ -14,7 +14,7 @@
         <div class="panel-body">
             <div class="input-group bottom5">
                 <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
-                <input #term type="text" class="form-control" (keyup)="searchSummaries(term.value)" placeholder="Enter keywords">
+                <input #term type="text" class="form-control" (keyup)="searchSummaries(term.value)" placeholder="Enter keywords" [ngModel]=currentSearchTerm>
             </div>
             <ul *ngIf='summaries' class="list-group">
                 <div *ngFor="#summary of summaries">

@@ -42,6 +42,9 @@ System.register(['angular2/core', 'angular2/router', '../services/category.servi
                 }
                 DashboardComponent.prototype.ngOnInit = function () {
                     var _this = this;
+                    this.currentSearchTerm = this._demoEntryService.prevSearchTerm;
+                    if (this.currentSearchTerm)
+                        this.searchSummaries(this.currentSearchTerm);
                     this._categoryService.getCategories()
                         .subscribe(function (categories) { return _this.categories = categories; }, function (error) { return _this.errorMessage = error; });
                     this.loggedIn = this._authService.isLoggedIn();
@@ -52,8 +55,13 @@ System.register(['angular2/core', 'angular2/router', '../services/category.servi
                 };
                 DashboardComponent.prototype.searchSummaries = function (searchTerm) {
                     var _this = this;
-                    this._demoEntryService.findSummaries(searchTerm, 5)
-                        .subscribe(function (summaries) { return _this.summaries = summaries; }, function (error) { return _this.errorMessage = error; });
+                    this.currentSearchTerm = searchTerm;
+                    localStorage.setItem('searchTerm', searchTerm);
+                    if (searchTerm)
+                        this._demoEntryService.findSummaries(searchTerm, 5)
+                            .subscribe(function (summaries) { return _this.summaries = summaries; }, function (error) { return _this.errorMessage = error; });
+                    else
+                        this.summaries = [];
                 };
                 DashboardComponent.prototype.gotoList = function (category) {
                     var link = ['Category', { prefix: category.prefix }];

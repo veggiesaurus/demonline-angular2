@@ -28,6 +28,6 @@ export class AddCategoryComponent {
     }
     
     returnToList(){        
-        this._router.navigate(["Admin"]);                
+        this._router.navigate(["Dashboard"]);                
     }   
 }

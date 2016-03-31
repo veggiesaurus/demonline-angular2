@@ -7,13 +7,13 @@
             <div class="row">
                 <div class="input-group bottom5">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                    <input type="text" class="form-control" [(ngModel)]="username" placeholder="Enter username">
+                    <input type="text" class="form-control" [(ngModel)]="username" placeholder="Enter username" (keyup.enter)="login()">
                 </div>
             </div>
             <div class="row">
                 <div class="input-group bottom5">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
-                    <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password" >
+                    <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password" (keyup.enter)="login()">
                 </div>
             </div>
             <div class="row">

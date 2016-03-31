@@ -40,7 +40,7 @@ System.register(['angular2/core', 'angular2/router', '../../services/category.se
                     this._categoryService.addCategory(this.category).subscribe(function (category) { return _this.category = category; }, function (error) { return _this.errorMessage = error; }, function () { return _this.returnToList(); });
                 };
                 AddCategoryComponent.prototype.returnToList = function () {
-                    this._router.navigate(["Admin"]);
+                    this._router.navigate(["Dashboard"]);
                 };
                 AddCategoryComponent = __decorate([
                     core_1.Component({

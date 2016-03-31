@@ -15,7 +15,7 @@ export class DashboardComponent {
     categories: Category[] = [];
     summaries: DemoSummary[] = [];
     loggedIn: boolean = false;
-
+    currentSearchTerm: string;
     errorMessage: string;
     constructor(
         protected _router: Router,
@@ -25,10 +25,13 @@ export class DashboardComponent {
     }
 
     ngOnInit() {
+        this.currentSearchTerm = this._demoEntryService.prevSearchTerm;
+        if (this.currentSearchTerm)
+            this.searchSummaries(this.currentSearchTerm);
         this._categoryService.getCategories()
             .subscribe(categories => this.categories = categories,
             error => this.errorMessage = <any>error);
-        this.loggedIn = this._authService.isLoggedIn(); 
+        this.loggedIn = this._authService.isLoggedIn();
 
     }
 
@@ -37,9 +40,14 @@ export class DashboardComponent {
     }
 
     searchSummaries(searchTerm : string){
-        this._demoEntryService.findSummaries(searchTerm, 5)
-            .subscribe(summaries => this.summaries = summaries,
-            error => this.errorMessage = <any>error);
+        this.currentSearchTerm = searchTerm;         
+        localStorage.setItem('searchTerm', searchTerm);
+        if (searchTerm)
+            this._demoEntryService.findSummaries(searchTerm, 5)
+                .subscribe(summaries => this.summaries = summaries,
+                error => this.errorMessage = <any>error);
+        else
+            this.summaries = [];
     }
     gotoList(category: Category) {
         let link = ['Category', { prefix: category.prefix }];

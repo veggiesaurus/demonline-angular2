@@ -28,6 +28,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
             DemoEntryService = (function () {
                 function DemoEntryService(http) {
                     this.http = http;
+                    this.prevSearchTerm = '';
                     this._hostUrl = 'http://localhost:3000/';
                     //private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
                     this._summaryUrl = this._hostUrl + 'api/demoEntry/summary';
@@ -42,6 +43,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                         .catch(this.handleError);
                 };
                 DemoEntryService.prototype.findSummaries = function (keywords, limit) {
+                    this.prevSearchTerm = keywords;
                     return this.http.get(this._searchUrl + keywords + '&limit=' + limit)
                         .map(function (res) { return res.json(); })
                         .catch(this.handleError);
