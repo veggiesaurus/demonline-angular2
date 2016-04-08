@@ -43,7 +43,7 @@ export class CategoryComponent {
     }
     
     addEntry() {
-        let link = ['AddEntry'];
+        let link = ['AddEntry', {prefix: this.category.prefix}];
         this._router.navigate(link);
     }
     

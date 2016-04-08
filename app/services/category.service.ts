@@ -8,8 +8,8 @@ import {Category} from '../models/category';
 export class CategoryService {
     constructor (private http: Http) {}
     
-    private _hostUrl = 'http://localhost:3000/';
-    //private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
+    //private _hostUrl = 'http://localhost:3000/';
+    private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
     private _categoryUrl = this._hostUrl+'api/cats/';
     private _categoryAdminUrl = this._hostUrl+'api/admin/cats/'
     

@@ -58,7 +58,7 @@ System.register(['angular2/core', 'angular2/router', '../services/demoentry.serv
                     this._router.navigate(link);
                 };
                 CategoryComponent.prototype.addEntry = function () {
-                    var link = ['AddEntry'];
+                    var link = ['AddEntry', { prefix: this.category.prefix }];
                     this._router.navigate(link);
                 };
                 CategoryComponent.prototype.goHome = function () {

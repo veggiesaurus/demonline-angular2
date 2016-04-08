@@ -29,8 +29,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
                 function DemoEntryService(http) {
                     this.http = http;
                     this.prevSearchTerm = '';
-                    this._hostUrl = 'http://localhost:3000/';
-                    //private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
+                    //private _hostUrl = 'http://localhost:3000/';
+                    this._hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
                     this._summaryUrl = this._hostUrl + 'api/demoEntry/summary';
                     this._searchUrl = this._hostUrl + 'api/demoEntry/search?keyword=';
                     this._entryUrl = this._hostUrl + 'api/demoEntry/ref/';

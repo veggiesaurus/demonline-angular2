@@ -28,8 +28,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
             CategoryService = (function () {
                 function CategoryService(http) {
                     this.http = http;
-                    this._hostUrl = 'http://localhost:3000/';
-                    //private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
+                    //private _hostUrl = 'http://localhost:3000/';
+                    this._hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
                     this._categoryUrl = this._hostUrl + 'api/cats/';
                     this._categoryAdminUrl = this._hostUrl + 'api/admin/cats/';
                 }

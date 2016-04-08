@@ -13,8 +13,8 @@ export class AuthService {
         this.token = localStorage.getItem('token');
     }
 
-    private _hostUrl = 'http://localhost:3000/';
-    //private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
+    //private _hostUrl = 'http://localhost:3000/';
+    private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
     private _authUrl = this._hostUrl + 'api/auth/';
 
     login(username: string, password: string) : Observable<boolean> {

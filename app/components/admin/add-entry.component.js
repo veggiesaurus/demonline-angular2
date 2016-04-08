@@ -39,7 +39,8 @@ System.register(['angular2/core', 'angular2/router', '../../services/demoentry.s
                 }
                 AddEntryComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    this._categoryService.getCategories().subscribe(function (categories) { return _this.categories = categories; }, function (error) { return _this.errorMessage = error; }, function () { return _this.entry.category = _this.categories[0].prefix; });
+                    var prefix = this._routeParams.get('prefix');
+                    this._categoryService.getCategories().subscribe(function (categories) { return _this.categories = categories; }, function (error) { return _this.errorMessage = error; }, function () { return _this.entry.category = prefix; });
                 };
                 AddEntryComponent.prototype.goBack = function () {
                     window.history.back();

@@ -10,8 +10,8 @@ export class DemoEntryService {
     prevSearchTerm = '';
     constructor(private http: Http) { }
 
-    private _hostUrl = 'http://localhost:3000/';
-    //private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
+    //private _hostUrl = 'http://localhost:3000/';
+    private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
     private _summaryUrl = this._hostUrl + 'api/demoEntry/summary';
     private _searchUrl = this._hostUrl + 'api/demoEntry/search?keyword=';
     private _entryUrl = this._hostUrl + 'api/demoEntry/ref/';

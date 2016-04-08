@@ -16,10 +16,7 @@
                     </a>
                     <div class="media-body">                        
                         <p *ngIf='entry.purpose' class="media-heading"><span class="entry-heading entry-purpose-heading">Purpose: </span><span class="entry-contents entry-purpose">{{entry.purpose}}</span></p>
-                        <p class="media-heading"><span *ngIf='entry.purpose' class="entry-heading entry-description-heading">Description: </span>
-                            <span
-                            *ngIf='entry.purpose' class="entry-contents entry-description">{{entry.description}}</span>
-                        </p>
+                        <p class="media-heading"><span *ngIf='entry.description' class="entry-heading entry-description-heading">Description: </span><span *ngIf='entry.description' class="entry-contents entry-description">{{entry.description}}</span></p>
                         <p *ngIf='entry.similarTo && entry.similarTo.length'>Similar to:
                             <a *ngFor="#simLink of entry.similarTo" (click)="gotoEntry(simLink)">{{simLink}}</a>
                         </p>

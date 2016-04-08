@@ -28,8 +28,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
             AuthService = (function () {
                 function AuthService(http) {
                     this.http = http;
-                    this._hostUrl = 'http://localhost:3000/';
-                    //private _hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
+                    //private _hostUrl = 'http://localhost:3000/';
+                    this._hostUrl = 'http://webapp-phy.uct.ac.za:3000/';
                     this._authUrl = this._hostUrl + 'api/auth/';
                     this.token = localStorage.getItem('token');
                 }

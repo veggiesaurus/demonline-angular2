@@ -23,10 +23,11 @@ export class AddEntryComponent {
     }
 
     ngOnInit() {
+        let prefix = this._routeParams.get('prefix');
         this._categoryService.getCategories().subscribe(
             categories => this.categories = categories,
             error => this.errorMessage = <any>error,
-            () => this.entry.category = this.categories[0].prefix);
+            () => this.entry.category = prefix);
     }
 
     goBack() {

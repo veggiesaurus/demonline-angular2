@@ -90,7 +90,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './service
                             component: edit_category_component_1.EditCategoryComponent
                         },
                         {
-                            path: '/admin/newEntry',
+                            path: '/admin/newEntry/:prefix',
                             name: 'AddEntry',
                             component: add_entry_component_1.AddEntryComponent
                         },

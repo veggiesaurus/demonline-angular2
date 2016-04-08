@@ -65,7 +65,7 @@ System.register(['angular2/core', 'angular2/router', '../../services/demoentry.s
                 EditEntryComponent.prototype.deleteEntry = function () {
                     var _this = this;
                     var ref = this._routeParams.get('ref');
-                    this._demoEntryService.deleteEntry(ref).subscribe(function (error) { return _this.errorMessage = error; }, function () { return _this.returnToList(); });
+                    this._demoEntryService.deleteEntry(ref).subscribe(function (entry) { return _this.entry = entry; }, function (error) { return _this.errorMessage = error; }, function () { return _this.returnToList(); });
                 };
                 EditEntryComponent = __decorate([
                     core_1.Component({

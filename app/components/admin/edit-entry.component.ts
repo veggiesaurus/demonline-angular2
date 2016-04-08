@@ -43,6 +43,6 @@ export class EditEntryComponent extends AddEntryComponent {
     
     deleteEntry(){
         let ref = this._routeParams.get('ref');    
-        this._demoEntryService.deleteEntry(ref).subscribe(error => this.errorMessage = <any> error, () => this.returnToList());
+        this._demoEntryService.deleteEntry(ref).subscribe(entry => this.entry=entry, error => this.errorMessage = <any> error, () => this.returnToList());
     }    
 }

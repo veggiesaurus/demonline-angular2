@@ -43,7 +43,7 @@ import {EditEntryComponent} from './components/admin/edit-entry.component';
         component: EditCategoryComponent
     },
     {
-        path: '/admin/newEntry',
+        path: '/admin/newEntry/:prefix',
         name: 'AddEntry',
         component: AddEntryComponent
     },
