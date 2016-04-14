@@ -6,10 +6,12 @@ import { User } from '../models/user';
 import { CategoryService } from '../services/category.service';
 import { DemoEntryService } from '../services/demoentry.service';
 import { AuthService } from '../services/auth.service';
+import { SortNumericRefPipe } from '../pipes/sort-ref-numeric';
 
 @Component({
     selector: 'my-dashboard',
-    templateUrl: './app/components/templates/dashboard.component.html'
+    templateUrl: './app/components/templates/dashboard.component.html',
+    pipes: [ SortNumericRefPipe ]
 })
 export class DashboardComponent {
     categories: Category[] = [];

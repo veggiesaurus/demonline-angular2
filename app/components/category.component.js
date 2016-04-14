@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../services/demoentry.service', '../services/category.service', '../services/auth.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../services/demoentry.service', '../services/category.service', '../services/auth.service', '../pipes/sort-ref-numeric'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../services/demoentry.serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, router_2, demoentry_service_1, category_service_1, auth_service_1;
+    var core_1, router_1, router_2, demoentry_service_1, category_service_1, auth_service_1, sort_ref_numeric_1;
     var CategoryComponent;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['angular2/core', 'angular2/router', '../services/demoentry.serv
             },
             function (auth_service_1_1) {
                 auth_service_1 = auth_service_1_1;
+            },
+            function (sort_ref_numeric_1_1) {
+                sort_ref_numeric_1 = sort_ref_numeric_1_1;
             }],
         execute: function() {
             CategoryComponent = (function () {
@@ -71,7 +74,8 @@ System.register(['angular2/core', 'angular2/router', '../services/demoentry.serv
                 CategoryComponent = __decorate([
                     core_1.Component({
                         selector: 'my-category',
-                        templateUrl: './app/components/templates/category.component.html'
+                        templateUrl: './app/components/templates/category.component.html',
+                        pipes: [sort_ref_numeric_1.SortNumericRefPipe]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, demoentry_service_1.DemoEntryService, category_service_1.CategoryService, auth_service_1.AuthService, router_2.RouteParams])
                 ], CategoryComponent);
