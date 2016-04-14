@@ -6,10 +6,12 @@ import { Category } from '../models/category';
 import { DemoEntryService } from '../services/demoentry.service';
 import { CategoryService } from '../services/category.service';
 import { AuthService } from '../services/auth.service';
+import { SortNumericRefPipe } from '../pipes/sort-ref-numeric';
 
 @Component({
     selector: 'my-category',
-    templateUrl: './app/components/templates/category.component.html'
+    templateUrl: './app/components/templates/category.component.html',
+    pipes: [ SortNumericRefPipe ]
 })
 export class CategoryComponent {
     summaries: DemoSummary[] = [];    
